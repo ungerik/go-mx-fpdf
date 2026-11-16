@@ -1,0 +1,21 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# env file
+.env
+.DS_Store
+**/.DS_Store
+.gstack/
+
+# Coding-agent scratch space, local to a checkout
+.context/

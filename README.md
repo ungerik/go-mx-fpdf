@@ -1,21 +1,25 @@
 # fpdf (legacy)
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/ungerik/go-mx/fpdf.svg)](https://pkg.go.dev/github.com/ungerik/go-mx/fpdf)
+[![Go Reference](https://pkg.go.dev/badge/github.com/ungerik/go-mx-fpdf.svg)](https://pkg.go.dev/github.com/ungerik/go-mx-fpdf)
 
 **Legacy package.** This is the original wrapper around the external
 [`codeberg.org/go-pdf/fpdf`](https://codeberg.org/go-pdf/fpdf) module. It is
-kept only as the byte-for-byte parity baseline while the native
-[`pdf`](../pdf) package (which inlines the fpdf engine) is brought up, and
-will be deleted afterwards. New code should import
-`github.com/ungerik/go-mx/pdf`.
+kept only as the byte-for-byte parity baseline of the native
+[`pdf`](https://github.com/ungerik/go-mx/tree/main/pdf) package of go-mx, which
+inlines the fpdf engine. New code should import `github.com/ungerik/go-mx/pdf`.
+
+It used to be the nested module `github.com/ungerik/go-mx/fpdf` of the
+[go-mx](https://github.com/ungerik/go-mx) repository. This repository keeps
+the history of that directory, with the pull requests it came from linked as
+`ungerik/go-mx#NN`.
 
 Composable PDF rendering primitives structured like the go-mx
-[`html`](../html) package, but targeting the
+[`html`](https://github.com/ungerik/go-mx/tree/main/html) package, but targeting the
 [`codeberg.org/go-pdf/fpdf`](https://codeberg.org/go-pdf/fpdf) renderer instead of
 an HTML markup writer.
 
 ```go
-import "github.com/ungerik/go-mx/fpdf"
+import "github.com/ungerik/go-mx-fpdf"
 
 doc := fpdf.NewDocument("Invoice",
     fpdf.Font(fpdf.Helvetica, fpdf.StyleBold, 24),
@@ -30,9 +34,10 @@ doc := fpdf.NewDocument("Invoice",
 err := doc.OutputFile(ctx, "hello.pdf")
 ```
 
-This module has its own `go.mod` so the `fpdf` dependency stays isolated from
-the rest of go-mx. It does not import the root `mx` package; it re-creates the
-same patterns against a different renderer.
+The package does not import the root `mx` package of go-mx; it re-creates the
+same patterns against a different renderer. Only its parity tests import go-mx:
+they compare its output with the `pdf` package of the go-mx version that
+`go.mod` requires.
 
 ## Relationship to the `html` package
 

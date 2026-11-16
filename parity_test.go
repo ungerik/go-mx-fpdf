@@ -22,7 +22,7 @@ import (
 	"testing"
 	"time"
 
-	legacy "github.com/ungerik/go-mx/fpdf"
+	legacy "github.com/ungerik/go-mx-fpdf"
 	native "github.com/ungerik/go-mx/pdf"
 )
 

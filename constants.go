@@ -1,4 +1,4 @@
-//go:generate go -C ../tools tool go-enum ../fpdf/$GOFILE
+//go:generate go -C tools tool go-enum ../$GOFILE
 
 package fpdf
 

@@ -3,10 +3,9 @@
 // renderer instead of an HTML markup writer.
 //
 // This is the legacy wrapper around the external fpdf module. It is kept only
-// as the byte-for-byte parity baseline while the native
-// github.com/ungerik/go-mx/pdf package (which inlines the fpdf engine) is
-// brought up, and will be deleted afterwards. New code should import
-// github.com/ungerik/go-mx/pdf.
+// as the byte-for-byte parity baseline of the native
+// github.com/ungerik/go-mx/pdf package, which inlines the fpdf engine. New
+// code should import github.com/ungerik/go-mx/pdf.
 //
 // The correspondence to the html package is deliberate:
 //

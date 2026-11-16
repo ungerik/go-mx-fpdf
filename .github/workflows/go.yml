@@ -1,0 +1,35 @@
+name: Go
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+
+    - name: Set up Go
+      uses: actions/setup-go@v6
+      with:
+        go-version: '1.27'
+
+    - name: Build
+      run: go build -v ./...
+
+    - name: Vet
+      run: go vet ./...
+
+    # The parity tests compare the output of this package with the native
+    # github.com/ungerik/go-mx/pdf package of the go-mx version go.mod requires.
+    - name: Test
+      run: go test -v ./...
+
+    # The go-enum methods are committed next to their //#enum types; -validate
+    # fails if any are missing or outdated. The tools module pins go-enum.
+    - name: Enum methods up to date
+      run: go -C tools tool go-enum -validate ../...
